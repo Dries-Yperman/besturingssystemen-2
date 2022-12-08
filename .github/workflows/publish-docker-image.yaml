@@ -24,8 +24,8 @@ jobs:
           images: dries-yperman/labo3:latest
       - name: info
         env:
-          TAG_META: ${{ steps.meta.output.tags }}
-          LABEL_META: ${{ steps.meta.output.labels }}
+          TAG_META: ${{ steps.meta.outputs.tags }}
+          LABEL_META: ${{ steps.meta.outputs.labels }}
         run: |
           echo "$TAG_META"
           echo "$LABEL_META"
