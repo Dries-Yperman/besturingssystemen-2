@@ -22,20 +22,12 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: dries-yperman/labo3:latest
-      - name: info
-        env:
-          TAG_META: ${{ steps.meta.outputs.tags }}
-          LABEL_META: ${{ steps.meta.outputs.labels }}
-        run: |
-          echo "$TAG_META"
-          echo "$LABEL_META"
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
         with:
           context: .
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          tags: dries-yperman/labo3:latest
 
   create_release:
     needs: push_to_registry
