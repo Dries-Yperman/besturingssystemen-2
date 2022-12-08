@@ -10,7 +10,7 @@ env:
 
 jobs:
   push_to_registry:
-    name: "Push $IMAGE_NAME to Docker Hub with tag latest"
+    name: Push ${{ IMAGE_NAME }} to Docker Hub with tag latest
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
@@ -40,4 +40,3 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           tag: "latest"
-          commit: "main"
