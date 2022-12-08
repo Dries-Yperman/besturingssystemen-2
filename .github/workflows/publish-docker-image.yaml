@@ -10,7 +10,7 @@ env:
 
 jobs:
   push_to_registry:
-    name: Push Docker image to Docker Hub with tag latest
+    name: "Push $IMAGE_NAME to Docker Hub with tag latest"
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
@@ -24,13 +24,13 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: "$IMAGE_NAME"
+          images: ${{ env.IMAGE_NAME }}
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
         with:
           context: .
           push: true
-          tags: "$IMAGE_NAME"
+          tags: ${{ env.IMAGE_NAME }}
 
   create_release:
     needs: push_to_registry
