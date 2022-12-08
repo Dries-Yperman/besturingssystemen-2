@@ -5,6 +5,9 @@ on:
     branches:
       - 'main'
 
+env:
+  IMAGE_NAME: driesyperman/labo3:latest
+
 jobs:
   push_to_registry:
     name: Push Docker image to Docker Hub with tag latest
@@ -21,13 +24,13 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: dries-yperman/labo3:latest
+          images: "$IMAGE_NAME"
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
         with:
           context: .
           push: true
-          tags: dries-yperman/labo3:latest
+          tags: "$IMAGE_NAME"
 
   create_release:
     needs: push_to_registry
