@@ -23,6 +23,12 @@ jobs:
         with:
           images: dries-yperman/labo3:latest
       - name: Build and push Docker image
+        env:
+          TAG_META: ${{ steps.meta.output.tags }}
+          LABEL_META: ${{ steps.meta.output.labels }}
+        run: |
+          echo "$TAG_META"
+          echo "$LABEL_META"
         uses: docker/build-push-action@v3
         with:
           context: .
