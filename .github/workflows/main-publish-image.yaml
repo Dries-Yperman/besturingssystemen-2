@@ -1,4 +1,4 @@
-name: Publish Docker image and release version
+name: Publish main Docker image and release version
 
 on:
   push:
